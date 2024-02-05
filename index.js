@@ -1,7 +1,22 @@
-const arr = [1, 2, 3];
-console.log(arr.at(4));
+// ########## SyntaxError ##########
+// console.log("Hello world";
 
-throw new Error("Just trying stuff out")
+// ########## ReferenceError ##########
+// console.log(nonExistingVariable);
 
-const newArr = new Array(-1);
+// greeting();
+// const greeting = () => console.log("Hello there!");
 
+// ########## TypeError ##########
+
+// function createSubstringOfArray(arr) {
+//   const slicedArr = arr.slice(3);
+//   console.log(slicedArr);
+// }
+
+// createSubstringOfArray(1);
+
+// createSubstringOfArray([1, 2, 3, 4, 5]);
+
+// let x = null;
+// console.log(x.toUpperCase());
