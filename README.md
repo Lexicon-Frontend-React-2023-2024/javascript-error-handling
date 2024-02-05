@@ -77,14 +77,111 @@ console.log(x.toUpperCase());
 
 ### Range Error
 
+"RangeError" is an error that occurs when you try to manipulate a value outside the permissible range. This typically happens when working with arrays or strings, and the index or length you're trying to use is not valid.
+
+```js
+// RangeError because the index 5 is out of bounds for the array. Although, javascript will try and avoid crashing so it will problably return undefined to you.
+const arr = [1, 2, 3];
+console.log(arr[5]);
+```
+
+[Back to top](#javascript-error-handling)
+
 ### Custom Error
+
+You can also throw and catch custom errors using the `throw` statement.
+
+```js
+throw new Error("This is a custom error");
+```
+
+[Back to top](#javascript-error-handling)
 
 ## Error Object
 
+In JavaScript, the `Error` object is a built-in object that provides information about runtime errors. When an error occurs, an `Error` object is created and thrown. This object contains properties such as `name` and `message` that provide information about the type and description of the error.
+
+[Back to top](#javascript-error-handling)
+
 ### Properties of the Error Object
+
+`name`: represents the name of the error. Common values include "Error", "SyntaxError", "TypeError", etc.
+
+`message`: Contains a human-readable description of the error. Provides additional details about what went wrong.
+
+[Back to top](#javascript-error-handling)
 
 ### Creating custom errors
 
+You can also create and throw your own custom errors by extending the Error object. This allows you to define custom properties and behaviors for specific error types in your application.
+
+```js
+class CustomError extends Error {
+  constructor(message, errorCode) {
+    super(message);
+    this.name = "CustomError";
+    this.errorCode = errorCode;
+  }
+}
+
+const response = {statusCode = 500};
+
+try {
+  throw new CustomError("This is a custom error", statusCode )
+} catch (error){
+  console.log(error.name)
+  console.log(error.message)
+  console.log(error.errorCode)
+}
+```
+
+[Back to top](#javascript-error-handling)
+
 ## Try-catch
 
+The `try...catch` statement allows you to execute a block of code and catch any exceptions _(errors)_ that may occur during its execution. This helps prevent the entire program from crashing when an error occurs, allowing you to gracefully handle exceptional situations.
+
+### Syntax
+
+```js
+try {
+  // Code that might throw an exception.
+} catch (error) {
+  // Code to handle the exception
+} finally {
+  // Code that will be executed regardless of whether an exception occurred or not.
+}
+```
+
+- The `try` block contains the code that may throw an exception.
+
+- If an exception occurs in the `try` block, the control is transferred to the `catch` block.
+
+- The `catch` block contains the code to handle the exception, and the error argument represents the exception _(error)_ object.
+
+- The `finally` block (optional) contains code that will be executed regardless of whether an exception occurred or not.
+
+[Back to top](#javascript-error-handling)
+
 ### Best practices
+
+1. **Specific Error Types:**
+
+Use specific error types (Error, SyntaxError, TypeError, etc.) based on the nature of the error.
+
+2. **Avoid Generic Catches:**
+
+Avoid catching generic exceptions unless necessary. Be specific about the errors you want to handle.
+
+3. **Rethrowing Errors:**
+
+You can rethrow caught errors using throw error; if you want the error to propagate up the call stack.
+
+4. **Cleanup in Finally:**
+
+Use the finally block for cleanup operations or releasing resources. This is optional.
+
+5. **Logging:**
+
+Log detailed information about errors for debugging purposes.
+By using try...catch, you can make your JavaScript code more resilient and handle unexpected situations more gracefully. It's an essential tool for building reliable and robust applications.
